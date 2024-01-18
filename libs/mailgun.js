@@ -5,15 +5,8 @@ const mailgun = new Mailgun(formData);
 
 const mg = mailgun.client({
   username: "api",
-  key: process.env.MAILGUN_API_KEY || "dummy",
+  key: process.env.MAILGUN_API_KEY,
 });
-
-if (!process.env.MAILGUN_API_KEY && process.env.NODE_ENV === "development") {
-  console.group("⚠️ MAILGUN_API_KEY missing from .env");
-  console.error("It's not mandatory but it's required to send emails.");
-  console.error("If you don't need it, remove the code from /libs/mailgun.js");
-  console.groupEnd();
-}
 
 /**
  * Sends an email using the provided parameters.
@@ -26,7 +19,7 @@ if (!process.env.MAILGUN_API_KEY && process.env.NODE_ENV === "development") {
  * @param {string} replyTo - The email address to set as the "Reply-To" address.
  * @returns {Promise} A Promise that resolves when the email is sent.
  */
-export const sendEmail = async ({ to, subject, text, html, replyTo }) => {
+export const sendEmail = async (to, subject, text, html, replyTo) => {
   const data = {
     from: config.mailgun.fromAdmin,
     to: [to],
@@ -38,7 +31,7 @@ export const sendEmail = async ({ to, subject, text, html, replyTo }) => {
 
   await mg.messages.create(
     (config.mailgun.subdomain ? `${config.mailgun.subdomain}.` : "") +
-      config.domainName,
+    config.domainName,
     data
   );
 };

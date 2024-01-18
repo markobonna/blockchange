@@ -1,5 +1,3 @@
-"use client";
-
 import { Crisp } from "crisp-sdk-web";
 import config from "@/config";
 

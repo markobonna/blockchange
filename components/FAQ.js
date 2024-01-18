@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef, useState } from "react";
 
 // <FAQ> component is a lsit of <Item> component
