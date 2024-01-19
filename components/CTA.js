@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import ButtonLead from "@/components/ButtonLead";
 const CTA = () => {
   return (
     <section className="relative hero overflow-hidden min-h-screen">
@@ -20,7 +20,7 @@ const CTA = () => {
             section...
           </p>
 
-          <button className="btn btn-primary btn-wide">Get ShipFast</button>
+          <ButtonLead />
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import TestimonialsAvatars from "./TestimonialsAvatars";
-
+import ButtonLead from "@/components/ButtonLead";
 const Hero = () => {
   return (
     <section className="max-w-7xl mx-auto bg-base-100 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
@@ -27,7 +27,7 @@ const Hero = () => {
           The NextJS boilerplate with all you need to build your SaaS, AI tool,
           or any other web app. From idea to production in 5 minutes.
         </p>
-        <button className="btn btn-primary btn-wide">Get ShipFast</button>
+        <ButtonLead />
 
         <TestimonialsAvatars priority={true} />
       </div>

@@ -1,7 +1,7 @@
 import "react-tooltip/dist/react-tooltip.css";
 import { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
-import { useSession } from "next-auth/react";
+
 import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
 import { Toaster } from "react-hot-toast";
@@ -14,7 +14,7 @@ const font = Inter({ subsets: ["latin"] });
 
 export default function Layout({ children }) {
   const router = useRouter();
-  const { data } = useSession();
+
   const [isMounted, setIsMounted] = useState(false);
 
   // Set Crisp Chat Support
@@ -33,17 +33,6 @@ export default function Layout({ children }) {
       }
     }
   }, [router.isReady, router.pathname]);
-
-  // Add User Unique ID to Crisp to easily identify users when reaching support
-  useEffect(() => {
-    if (data?.user && config?.crisp?.id) {
-      Crisp.session.setData({ userId: data.user?.id });
-    }
-  }, [data]);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   return (
     // Most errors are catched in ErrorBondary to show a nice error page
